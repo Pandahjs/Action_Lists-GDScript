@@ -269,3 +269,18 @@ static func In_Out_Bounce(PercentComplete : float)->float:
         return (1 - Out_Bounce(1 - 2 * PercentComplete)) / 2
     else:
         return (1 + Out_Bounce(2 * PercentComplete - 1)) / 2
+
+################################################################################
+
+static func In_Ease(PercentComplete : float)->float:
+    return sqrt(PercentComplete)
+
+static func Out_Ease(PercentComplete : float)->float:
+    return pow(PercentComplete, 2.0)
+
+## NOTE: Fast is a descriptor of the behavior, not the Big O Complexity
+static func In_Fast(PercentComplete : float)->float:
+    return sqrt(sqrt(PercentComplete))
+
+static func Out_Fast(PercentComplete : float)->float:
+    return pow(PercentComplete, 4.0)
