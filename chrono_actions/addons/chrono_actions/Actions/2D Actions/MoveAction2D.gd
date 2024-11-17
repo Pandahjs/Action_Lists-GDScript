@@ -22,7 +22,6 @@
 ##    Author: Harris Sinclair
 ## Last Edit: 2024-11-16
 ##     Brief: This file defines a Move Action in 2D for the ChronoActions system
-
 extends BaseAction
 
 class_name MoveAction2D
