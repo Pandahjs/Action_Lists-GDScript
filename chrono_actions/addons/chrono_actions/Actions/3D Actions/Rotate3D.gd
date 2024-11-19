@@ -41,6 +41,7 @@ var isDegrees : bool   = true
 # Duration_  : How long it should take to Rotate (In Seconds)
 # Start_     : Where the Rotate should Start  
 # End_       : Where the Rotation should End Up
+# Axis_      : Which Axis is being rotated around (X[0], Y[1], or Z[2])
 # isGlobal_  : Whether this is a Global or Local Rotation Change
 # isDegrees_ : Whether the passed values are in Degrees (True) or Radians (False)
 #
@@ -54,34 +55,34 @@ func _init(Target_ : Node3D, Duration_ : float, Start_ : float, End_ : float, Ax
     # We have to do this Arcane Ritual
     # -----------------------------------
     # IF YOU KNOW *why* this math makes things work, please write in!
-    var OldScale = 360
-    var NewScale = 4
-    var NewStartValue = ((Start_)*NewScale)/OldScale
-    var NewEndValue   = ((End_)*NewScale)/OldScale
+    #var OldScale = 360
+    #var NewScale = 4
+    #var NewStartValue = ((Start_)*NewScale)/OldScale
+    #var NewEndValue   = ((End_)*NewScale)/OldScale
 
     match Axis_:
         0:
             if isDegrees:
-                Start = Quaternion(Basis(Vector3(1,0,0),deg_to_rad(NewStartValue)).orthonormalized())
-                End = Quaternion(Basis(Vector3(1,0,0),deg_to_rad(NewEndValue)).orthonormalized())
+                Start = Quaternion(Basis(Vector3(1,0,0),deg_to_rad(Start_)).orthonormalized())
+                End = Quaternion(Basis(Vector3(1,0,0),deg_to_rad(End_)).orthonormalized())
             else:
-                Start = Quaternion(Basis(Vector3(1,0,0),(NewStartValue)).orthonormalized())
-                End = Quaternion(Basis(Vector3(1,0,0),(NewEndValue)).orthonormalized())
+                Start = Quaternion(Basis(Vector3(1,0,0),(Start_)).orthonormalized())
+                End = Quaternion(Basis(Vector3(1,0,0),(End_)).orthonormalized())
         1:
             if isDegrees:
-                Start = Quaternion(Basis(Vector3(0,1,0),deg_to_rad(NewStartValue)).orthonormalized())
-                End = Quaternion(Basis(Vector3(0,1,0),deg_to_rad(NewEndValue)).orthonormalized())
+                Start = Quaternion(Basis(Vector3(0,1,0),deg_to_rad(Start_)).orthonormalized())
+                End = Quaternion(Basis(Vector3(0,1,0),deg_to_rad(End_)).orthonormalized())
             else:
-                Start = Quaternion(Basis(Vector3(0,1,0),(NewStartValue)).orthonormalized())
-                End = Quaternion(Basis(Vector3(0,1,0),(NewEndValue)).orthonormalized())
+                Start = Quaternion(Basis(Vector3(0,1,0),(Start_)).orthonormalized())
+                End = Quaternion(Basis(Vector3(0,1,0),(End_)).orthonormalized())
 
         2:
             if isDegrees:
-                Start = Quaternion(Basis(Vector3(0,0,1),deg_to_rad(NewStartValue)).orthonormalized())
-                End = Quaternion(Basis(Vector3(0,0,1),deg_to_rad(NewEndValue)).orthonormalized())
+                Start = Quaternion(Basis(Vector3(0,0,1),deg_to_rad(Start_)).orthonormalized())
+                End = Quaternion(Basis(Vector3(0,0,1),deg_to_rad(End_)).orthonormalized())
             else:
-                Start = Quaternion(Basis(Vector3(0,0,1),(NewStartValue)).orthonormalized())
-                End = Quaternion(Basis(Vector3(0,0,1),(NewEndValue)).orthonormalized())
+                Start = Quaternion(Basis(Vector3(0,0,1),(Start_)).orthonormalized())
+                End = Quaternion(Basis(Vector3(0,0,1),(End_)).orthonormalized())
 
     Current = Start
 

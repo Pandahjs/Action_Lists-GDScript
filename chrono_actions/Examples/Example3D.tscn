@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://baf2ct51nhfsa"]
+[gd_scene load_steps=4 format=3 uid="uid://baf2ct51nhfsa"]
+
+[ext_resource type="Script" path="res://addons/chrono_actions/Actions/Other/ChronoList.gd" id="1_ij5c2"]
+[ext_resource type="Script" path="res://Examples/example_3d.gd" id="1_jrnmh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i157m"]
 
 [node name="SceneRoot3D" type="Node3D"]
+script = ExtResource("1_jrnmh")
+
+[node name="ChronoList" type="Node" parent="."]
+script = ExtResource("1_ij5c2")
+
+[node name="3D_Object" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_i157m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.897058, 0.441913, 0, -0.441913, 0.897058, 0.0890573, 2.22696, 3.73778)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0430712, 3.02523)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(-0.258819, -0.726488, -0.636575, 0.426855, -0.677212, 0.599315, -0.866491, -0.116611, 0.485381, -6.71215, 2.8254, -2.62275)
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(-1.04308e-07, 0.752116, 0.659031, -0.441913, -0.591189, 0.674692, 0.897058, -0.291234, 0.33237, 3.52964, 2.79888, -3.38966)
