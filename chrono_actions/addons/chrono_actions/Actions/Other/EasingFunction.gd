@@ -2,7 +2,6 @@
 ##
 ##      File: EasingFunction.gd
 ##    Author: Harris Sinclair
-## Last Edit: 2024-11-16
 ##     Brief: This file defines a Collection of Static Easing Functions 
 ##            for the ChronoActions system.
 ##

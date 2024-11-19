@@ -20,7 +20,6 @@
 ##
 ##      File: MoveAction3D.gd
 ##    Author: Harris Sinclair
-## Last Edit: 2024-11-16
 ##     Brief: This file defines a Move Action in 3D for the ChronoActions system
 @tool
 extends BaseAction
