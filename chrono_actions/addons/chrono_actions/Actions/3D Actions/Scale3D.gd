@@ -18,37 +18,34 @@
 ## OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ## SOFTWARE.
 ##
-##      File: MoveAction2D.gd
+##      File: Scale3D.gd
 ##    Author: Harris Sinclair
 ## Last Edit: 2024-11-16
-##     Brief: This file defines a Move Action in 2D for the ChronoActions system
+##     Brief: This file defines a Scale Action in 2D for the ChronoActions system
 @tool
 extends BaseAction
 
-class_name MoveAction2D
+class_name Scale3D
 
-var Start   := Vector2(0,0)
-var End     := Vector2(0,0)
-var Current := Vector2(0,0)
+var Start   := Vector3(0,0,0)
+var End     := Vector3(0,0,0)
+var Current := Vector3(0,0,0)
 
-var Target   : Node2D = null
-var isGlobal : bool = false 
+var Target   : Node3D = null
 
 # Initialization Function
 #
-# Target_   : What Node2D inherited object is being moved
-# Duration_ : How long it should take to Move (In Seconds)
-# Start_    : Where the Move should Start From 
-# End_      : Where the Move should End Up
-# isGlobal_ : Whether this is a Global or Local Position Change
+# Target_   : What Node3D inherited object is being scaled
+# Duration_ : How long it should take to Scale (In Seconds)
+# Start_    : What size the Scale should Start  
+# End_      : How big the Scale should End Up
 #
-func _init(Target_ : Node2D, Duration_ : float, Start_ : Vector2, End_ : Vector2, isGlobal_:bool = false):
-    super._init(Duration_, "MoveAction2D")
+func _init(Target_ : Node3D, Duration_ : float, Start_ : Vector3, End_ : Vector3):
+    super._init(Duration_, "Scale3D")
     Target   = Target_
     Start    = Start_
     Current  = Start_
     End      = End_
-    isGlobal = isGlobal_
 
 # Act Function
 #
@@ -65,9 +62,6 @@ func Act(TimeStep : float) -> bool:
     Current = Start + ((End - Start) * PercentComplete)
 
     if Target != null:
-        if isGlobal:
-            Target.global_position = Current
-        else:
-            Target.position = Current
+        Target.scale = Current
 
     return AmDone

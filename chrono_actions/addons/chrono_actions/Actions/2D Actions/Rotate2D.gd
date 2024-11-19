@@ -18,14 +18,14 @@
 ## OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ## SOFTWARE.
 ##
-##      File: RotateAction2D.gd
+##      File: Rotate2D.gd
 ##    Author: Harris Sinclair
 ## Last Edit: 2024-11-16
 ##     Brief: This file defines a Rotate Action in 2D for the ChronoActions system
 @tool
 extends BaseAction
 
-class_name RotateAction2D
+class_name Rotate2D
 
 var Start   :float= 0 
 var End     :float= 0
@@ -46,7 +46,7 @@ var isDegrees : bool   = true
 #
 func _init(Target_ : Node2D, Duration_ : float, Start_ : float, End_ : float, \
             isGlobal_:bool = false, isDegrees_ : bool = true):
-    super._init(Duration_, "RotateAction2D")
+    super._init(Duration_, "Rotate2D")
     Target    = Target_
     Start     = Start_
     Current   = Start_

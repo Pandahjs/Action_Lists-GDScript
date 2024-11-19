@@ -18,14 +18,14 @@
 ## OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ## SOFTWARE.
 ##
-##      File: RotateAction3D.gd
+##      File: Rotate3D.gd
 ##    Author: Harris Sinclair
 ## Last Edit: 2024-11-16
 ##     Brief: This file defines a Rotate Action in 2D for the ChronoActions system
 @tool
 extends BaseAction
 
-class_name RotateAction3D
+class_name Rotate3D
 
 var Start   : Quaternion 
 var End     : Quaternion
@@ -45,7 +45,7 @@ var isDegrees : bool   = true
 # isDegrees_ : Whether the passed values are in Degrees (True) or Radians (False)
 #
 func _init(Target_ : Node3D, Duration_ : float, Start_ : float, End_ : float, Axis_:int, isDegrees_ : bool = true):
-    super._init(Duration_, "RotateAction3D")
+    super._init(Duration_, "Rotate3D")
     Target    = Target_
     isDegrees = isDegrees_
 

@@ -18,14 +18,14 @@
 ## OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ## SOFTWARE.
 ##
-##      File: ScaleActionControl.gd
+##      File: ScaleControl.gd
 ##    Author: Harris Sinclair
 ## Last Edit: 2024-11-16
 ##     Brief: This file defines a Scale Action in 2D for the ChronoActions system
 @tool
 extends BaseAction
 
-class_name ScaleActionControl
+class_name ScaleControl
 
 var Start   := Vector2(0,0)
 var End     := Vector2(0,0)
@@ -43,7 +43,7 @@ var isGlobal : bool = false
 # isGlobal_ : Whether this is a Global or Local Scale Change
 #
 func _init(Target_ : Control, Duration_ : float, Start_ : Vector2, End_ : Vector2, isGlobal_:bool = false):
-    super._init(Duration_, "ScaleActionControl")
+    super._init(Duration_, "ScaleControl")
     Target   = Target_
     Start    = Start_
     Current  = Start_

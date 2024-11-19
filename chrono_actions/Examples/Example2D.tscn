@@ -12,7 +12,6 @@ script = ExtResource("1_x3dxe")
 script = ExtResource("2_hc5dq")
 
 [node name="2D_Object" type="MeshInstance2D" parent="."]
-modulate = Color(0.494118, 0.0470588, 0.694118, 1)
 position = Vector2(300, 325)
 scale = Vector2(155, 155)
 mesh = SubResource("QuadMesh_8ph60")
