@@ -1,35 +1,57 @@
-##
-## The Base Action for the ChronoActions system. New Actions should Inherit from this Action 
+######################################################################################
 ##
 ##      File: BaseAction.gd
 ##    Author: Harris Sinclair
 ## Last Edit: 2024-11-16
 ##     Brief: This file defines a Base Action for the ChronoActions system
-
+##
+######################################################################################
 @tool
-# This is some sample text
 class_name BaseAction
 
 # How long an Action will last for (in Seconds)
-var Duration        : float    = 0
+var Duration : float = 0
 
 # How much time has passed for the Action (in Seconds)
-var TimeElapsed     : float    = 0
+var TimeElapsed : float = 0
 
 # What percentage of the Action has completed.
-var PercentComplete : float    = 0
+var PercentComplete : float = 0
 
 # The Name of the Action
-var Name            : String   = ""
+var Name : String   = ""
 
 # Which Easing Function the Action uses. 
 ## For More Information, see "./Actions/Other/EasingFunction.gd"
-var EaseFunction    : Callable = EasingFunction.Linear
+var EaseFunction : Callable = EasingFunction.Linear
 
-# Basic Initialization Function
-func _init(duration_ : float, name_ : String) -> void:
+# What Groups this Action is a part of
+## This allows you to interact with only specific groups of Actions.
+## For example, you might want to block logical actions while you wait for an animation
+## Or you might want have all visual actions undergo bullet time.
+## 
+## You can be a part of a group and/or block a group as an action.
+##
+## Inititally, there is just the "default" group that everything is a part of and which (almost) nothing blocks.
+## 
+var Groups : Dictionary = {
+#     Name    |  Member, Blocking
+    "default" : [ true ,  false],
+
+# Some Other Potential Groups:
+##  "logical"   : [false, false],
+##  "kinematic" : [false, false],
+##  "visual"    : [false, false],
+##  "enemies"   : [false, false],
+##  "items"     : [false, false],
+##  "ui"        : [false, false]
+}
+
+# Base Initialization Function
+func _init(duration_ : float, name_ : String, ease_ : Callable = EasingFunction.Linear) -> void:
     Duration = duration_
     Name = name_
+    EaseFunction = ease_
 
 # Act
 #
@@ -58,3 +80,8 @@ func Act(TimeStep : float) -> bool:
 ## If an action doesn't overload this, it just returns Name and % Completed
 func GetString() -> String:
     return Name + " %.f"%(PercentComplete * 100)    
+
+# Allows you to set the Ease Function for any action.
+func SetEaseFunction(ease_func_ : Callable):
+    EaseFunction = ease_func_
+    pass
