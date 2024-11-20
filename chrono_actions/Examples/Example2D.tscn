@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://cmo2jhuvajyhg"]
 
 [ext_resource type="Script" path="res://Examples/example_2d.gd" id="1_x3dxe"]
-[ext_resource type="Script" path="res://addons/chrono_actions/Actions/Other/ChronoList.gd" id="2_hc5dq"]
+[ext_resource type="Script" path="res://addons/chrono_actions/Actions/Other/RelatedScripts/ChronoList.gd" id="2_hc5dq"]
 [ext_resource type="Texture2D" uid="uid://g20kfya35gn0" path="res://Example_Assets/ducky_3_spritesheet.png" id="3_gagvc"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_l0675"]

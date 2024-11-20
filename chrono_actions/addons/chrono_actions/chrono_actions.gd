@@ -4,7 +4,7 @@ extends EditorPlugin
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
 	add_custom_type("Chrono List","Node",\
-	preload("res://addons/chrono_actions/Actions/Other/ChronoList.gd"),\
+	preload("res://addons/chrono_actions/Actions/Other/RelatedScripts/ChronoList.gd"),\
 	preload("res://addons/chrono_actions/Assets/ChronoList_Node_Icon.png"))
 
 
