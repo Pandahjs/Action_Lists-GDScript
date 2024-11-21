@@ -17,4 +17,6 @@ Their interactive video sets on this stuff really help me understand it.
 Wally the Mallard Duck is from this fine user on itch.io:
 https://caz-creates-games.itch.io/ducky-3
 
-
+Void Space Assets are drawn from these places on itch.io:
+https://foozlecc.itch.io/void-environment-pack
+https://foozlecc.itch.io/void-fleet-pack-1
