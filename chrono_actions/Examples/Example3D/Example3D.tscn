@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://baf2ct51nhfsa"]
 
 [ext_resource type="Script" path="res://addons/chrono_actions/Actions/Other/RelatedScripts/ChronoList.gd" id="1_ij5c2"]
-[ext_resource type="Script" path="res://Examples/example_3d.gd" id="1_jrnmh"]
+[ext_resource type="Script" path="res://Examples/Example3D/example_3d.gd" id="1_jrnmh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_i157m"]
 
