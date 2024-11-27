@@ -3,7 +3,7 @@ using Godot;
 using System;
 
 [Tool]
-public partial class chrono_actions_C# : EditorPlugin
+public partial class chrono_actions_cs : EditorPlugin
 {
 	public override void _EnterTree()
 	{
