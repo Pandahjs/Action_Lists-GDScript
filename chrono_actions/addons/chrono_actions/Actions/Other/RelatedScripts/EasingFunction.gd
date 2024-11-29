@@ -81,7 +81,7 @@ static func In_Out_Cubic(PercentComplete : float)->float:
 
 ## https://easings.net/#easeInQuart
 static func In_Quartic(PercentComplete : float)->float:
-    return PercentComplete * PercentComplete * PercentComplete * PercentComplete
+    return pow(PercentComplete, 4)
 
 ## https://easings.net/#easeOutQuart
 static func Out_Quartic(PercentComplete : float)->float:
@@ -90,7 +90,7 @@ static func Out_Quartic(PercentComplete : float)->float:
 ## https://easings.net/#easeInOutQuart
 static func In_Out_Quartic(PercentComplete : float)->float:
     if PercentComplete < 0.5:
-        return 8*PercentComplete*PercentComplete*PercentComplete*PercentComplete
+        return 8*pow(PercentComplete, 4)
     else:
         return 1 - (pow(-2 * PercentComplete + 2, 4) / 2)
 
@@ -98,8 +98,7 @@ static func In_Out_Quartic(PercentComplete : float)->float:
 
 ## https://easings.net/#easeInQuint
 static func In_Quintic(PercentComplete : float)->float:
-    return PercentComplete * PercentComplete * PercentComplete * PercentComplete\
-            * PercentComplete
+    return pow(PercentComplete, 5)
 
 ## https://easings.net/#easeOutQuint
 static func Out_Quintic(PercentComplete : float)->float:
@@ -108,8 +107,7 @@ static func Out_Quintic(PercentComplete : float)->float:
 ## https://easings.net/#easeInOutQuint
 static func In_Out_Quintic(PercentComplete : float)->float:
     if PercentComplete < 0.5:
-        return 16*PercentComplete*PercentComplete*PercentComplete\
-                    *PercentComplete*PercentComplete
+        return 16*pow(PercentComplete, 5)
     else:
         return 1 - (pow(-2 * PercentComplete + 2, 5) / 2)
 

@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://css8urcxq6ykm"]
+[gd_scene load_steps=2 format=3 uid="uid://css8urcxq6ykm"]
+
+[ext_resource type="Script" path="res://addons/chrono_actions_cs/ActionMisc/ChronoList.cs" id="1_k105y"]
 
 [node name="Example2D" type="Node2D"]
+
+[node name="Chrono List" type="Node" parent="."]
+script = ExtResource("1_k105y")
