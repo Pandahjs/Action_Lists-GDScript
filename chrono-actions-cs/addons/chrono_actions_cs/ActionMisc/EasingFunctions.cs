@@ -142,6 +142,7 @@ public static class EasingFunctions
             return (2-Mathf.Pow(2, -20*percentComplete + 10)) / 2;
     }
 
+    // TODO Add the rest of the easing functions
 
 } //ssalc
 
