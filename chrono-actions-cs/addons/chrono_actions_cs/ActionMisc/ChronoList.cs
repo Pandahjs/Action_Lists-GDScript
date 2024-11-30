@@ -14,7 +14,7 @@ public partial class ChronoList : Node
 	public override void _Ready()
 	{
 		actionList = new Godot.Collections.Array<BaseAction>();
-		blockedActions = new List<string>();
+		blockedGroups = new List<string>();
 	}
 
 	public void AddAction(BaseAction action)
