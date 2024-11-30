@@ -33,11 +33,10 @@ static var Z_Axis := Vector3(0,0,1)
 
 # Initialization Function
 #
-# Target_    : What Node2D inherited object is being rotated
+# Target_    : What Node3D inherited object is being rotated
 # Duration_  : How long it should take to Rotate (In Seconds)
 # Axis_      : What Axis is being rotated around
 # Angle_     : How Much to Rotate Around the Axis
-# isGlobal_  : Whether this is a Global or Local Rotation Change
 # isDegrees_ : Whether the passed values are in Degrees (True) or Radians (False)
 #
 func _init(Target_ : Node3D, Duration_ : float, Axis_:Vector3, Angle_ : float, isDegrees_ : bool = true):
