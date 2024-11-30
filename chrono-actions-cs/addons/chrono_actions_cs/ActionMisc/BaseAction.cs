@@ -20,7 +20,7 @@ public partial class BaseAction : GodotObject
     /// Or you might want to have all visual actions undergo bullet time.
     ///
     /// You can be a part of a group and/or block a group as an action.
-    private Dictionary<string,List<bool>> Groups = new Dictionary<string, List<bool>>();
+    public Dictionary<string,List<bool>> Groups = new Dictionary<string, List<bool>>();
 
     // What percentage of this Action is complete (0 to 1 scale)
     protected float PercentComplete = 0.0f;
