@@ -61,7 +61,7 @@ public partial class BaseAction : GodotObject
     // Bullet Time, Rewind, Time Dialation, ETC
     //
     // Return: On Completion, return true. Else return false to indicate still working.
-    public bool Act(float TimeStep)
+    public virtual bool Act(float TimeStep)
     {
         // Early Exit so we don't divide by zero
         if(Duration == 0)
