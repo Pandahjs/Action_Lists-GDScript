@@ -12,12 +12,20 @@ public partial class Example3d : Node3D
 		controller = GetNode<ChronoList>("./Chrono List");
 		exampleBox = GetNode<MeshInstance3D>("./Box");
 	
-		controller.AddAction(new Rotate3D(exampleBox,5,new Vector3(1,1,1),360));
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(Input.IsKeyPressed(Key.J))
+		{
+			controller.AddAction(new Rotate3D(exampleBox,5,new Vector3(0,1,0),-90));
+		}
 
+		if(Input.IsKeyPressed(Key.L))
+		{
+			controller.AddAction(new Rotate3D(exampleBox,5,new Vector3(0,1,0),90));
+		}
 	}
 }

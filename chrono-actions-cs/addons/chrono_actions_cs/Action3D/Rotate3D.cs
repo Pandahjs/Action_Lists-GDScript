@@ -22,7 +22,7 @@ public partial class Rotate3D : BaseAction
     // Angle_     : How Much to Rotate Around the Axis
     // isDegrees_ : Whether the passed values are in Degrees (True) or Radians (False)
     //
-    public Rotate3D(Node3D Target_, float Duration_, Vector3 Axis_, float Angle_, bool isDegrees_ = true)
+    public Rotate3D(Node3D Target_, float Duration_, Vector3 Axis_, float Angle_, bool Clockwise = true, bool isDegrees_ = true)
     {
         base._init(Duration_,"Rotate3D");
         Target = Target_;
@@ -44,9 +44,8 @@ public partial class Rotate3D : BaseAction
         {
             // Illegal, can not assign to Basis like this...why?!
             //Target.Transform.Basis = new Basis(Current);
-            Transform3D targetCurrent = Target.Transform;
-            targetCurrent.Basis = new Basis(Current);
-            Target.Transform = targetCurrent;
+            // Transform3D targetCurrent = Target.Transform;
+            Target.GlobalBasis = new Basis(Current);
         }
 
         return AmDone;
