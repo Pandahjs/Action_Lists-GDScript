@@ -18,7 +18,7 @@ public partial class Scale3D : BaseAction
     // End_      : Where the Scale should End Up
     // isGlobal_ : Whether this is a Global or Local Scale Change
     //
-    public void _init(Node3D Target_, float Duration_, Vector3 Start_, Vector3 End_, bool isGlobal_ = false)
+    public Scale3D(Node3D Target_, float Duration_, Vector3 Start_, Vector3 End_, bool isGlobal_ = false)
     {
         base._init(Duration_,"Scale3D");
         Start = Start_;

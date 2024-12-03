@@ -22,7 +22,7 @@ public partial class Rotate3D : BaseAction
     // Angle_     : How Much to Rotate Around the Axis
     // isDegrees_ : Whether the passed values are in Degrees (True) or Radians (False)
     //
-    public void _init(Node3D Target_, float Duration_, Vector3 Axis_, float Angle_, bool isDegrees_ = true)
+    public Rotate3D(Node3D Target_, float Duration_, Vector3 Axis_, float Angle_, bool isDegrees_ = true)
     {
         base._init(Duration_,"Rotate3D");
         Target = Target_;
@@ -30,7 +30,7 @@ public partial class Rotate3D : BaseAction
         float end_rotation = (isDegrees_)?Mathf.DegToRad(Angle_):Angle_;
 
         Start = Target.Transform.Basis.GetRotationQuaternion();
-        End = new Quaternion(Axis_,end_rotation);
+        End = new Quaternion(Axis_.Normalized(),end_rotation);
         Current = Start;
     }
 

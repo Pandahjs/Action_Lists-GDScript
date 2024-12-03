@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://do2ly5nvfbrbd"]
+
+[ext_resource type="Script" path="res://Examples/Example3D/Example3d.cs" id="1_qfyx3"]
+[ext_resource type="Script" path="res://addons/chrono_actions_cs/ActionMisc/ChronoList.cs" id="1_s07my"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cm0sl"]
+
+[node name="Example3d" type="Node3D"]
+script = ExtResource("1_qfyx3")
+
+[node name="Box" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_cm0sl")
+
+[node name="Chrono List" type="Node" parent="."]
+script = ExtResource("1_s07my")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999941, -0.00281874, 0.0105197, 1.34276e-09, 0.965926, 0.258819, -0.0108908, -0.258804, 0.965869, -0.026537, 1.28738, 2.91614)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.854423, 0.0741089, 0.514265, -0.306281, 0.871363, 0.3833, -0.419706, -0.485011, 0.767211, 2, 1.3952, 3.32113)

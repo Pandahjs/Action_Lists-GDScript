@@ -18,7 +18,7 @@ public partial class Move3D : BaseAction
     // End_      : Where the Move should End Up
     // isGlobal_ : Whether this is a Global or Local Position Change
     //
-    public void _init(Node3D Target_, float Duration_, Vector3 Start_, Vector3 End_, bool isGlobal_ = false)
+    public Move3D(Node3D Target_, float Duration_, Vector3 Start_, Vector3 End_, bool isGlobal_ = false)
     {
         base._init(Duration_,"Move2D");
         Start = Start_;
