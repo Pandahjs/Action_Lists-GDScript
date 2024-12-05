@@ -1,3 +1,11 @@
+//####################################################################################
+// 
+//      File: ChronoList.gd
+//    Author: Harris Sinclair
+//     Brief: This file defines the behavior of the ChronoList Node
+//            The Brain of the ChronoActions System, This Executes the Actions.
+//
+//####################################################################################
 #if TOOLS
 using Godot;
 using System;
@@ -27,8 +35,10 @@ public partial class ChronoList : Node
 	{
 		blockedGroups.Clear();
 	
+		// For all actions (that we're going to execute)
 		foreach(BaseAction action in actionList)
 		{
+			// Check if we're in a blocked group
 			bool isBlocked = false;	
 			foreach(string group in blockedGroups)
 			{
@@ -38,16 +48,18 @@ public partial class ChronoList : Node
 
 			if(!isBlocked)
 			{
+				// Run the Action Forward
 				bool result = action.Act((float)delta);
 				GD.Print(action.GetString());
 
+				// if it's done, delete it
 				if(result == true)
 					actionList.Remove(action);
 			
 				// Wait Action Check
-
 				if(result != true)
 				{
+					// Add it's blocked groups to the list (if any)
 					foreach(var group in action.Groups.Keys)
 					{
 						if(action.IsBlockingGroup(group))
