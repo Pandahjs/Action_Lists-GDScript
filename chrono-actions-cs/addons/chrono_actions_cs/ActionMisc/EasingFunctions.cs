@@ -24,6 +24,7 @@
 #if TOOLS
 using Godot;
 using System;
+using System.Data.SqlTypes;
 
 public static class EasingFunctions
 {
@@ -180,7 +181,27 @@ public static class EasingFunctions
             return (2-Mathf.Pow(2, -20*percentComplete + 10)) / 2;
     }
 
-    // TODO Add the rest of the easing functions
+    public static float In_Circular(float percentComplete)
+    {
+        return 1-Mathf.Sqrt(1-Mathf.Pow(percentComplete, 2));
+    }
+
+    public static float Out_Circular(float percentComplete)
+    {
+        return Mathf.Sqrt(1-Mathf.Pow(percentComplete - 2, 2));
+    }
+
+    public static float In_Out_Circular(float percentComplete)
+    {
+        if(percentComplete < 0.5)
+        {
+            return (1-Mathf.Sqrt(1-Mathf.Pow(2*percentComplete, 2)))/2;
+        }
+        else
+        {
+            return (1+Mathf.Sqrt(1-Mathf.Pow(-2*percentComplete+2, 2)))/2;
+        }
+    }
 
 } //ssalc
 
