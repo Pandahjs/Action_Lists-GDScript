@@ -25,6 +25,8 @@
 using Godot;
 using System;
 using System.Data.SqlTypes;
+using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
 
 public static class EasingFunctions
 {
@@ -181,16 +183,21 @@ public static class EasingFunctions
             return (2-Mathf.Pow(2, -20*percentComplete + 10)) / 2;
     }
 
+    /////////////////////////////////////////////////////////////////
+
+    // https://easings.net/#easeInCirc
     public static float In_Circular(float percentComplete)
     {
         return 1-Mathf.Sqrt(1-Mathf.Pow(percentComplete, 2));
     }
 
+    // https://easings.net/#easeOutCirc
     public static float Out_Circular(float percentComplete)
     {
         return Mathf.Sqrt(1-Mathf.Pow(percentComplete - 2, 2));
     }
 
+    // https://easings.net/#easeInOutCirc
     public static float In_Out_Circular(float percentComplete)
     {
         if(percentComplete < 0.5)
@@ -203,6 +210,179 @@ public static class EasingFunctions
         }
     }
 
+    /////////////////////////////////////////////////////////////////
+
+    // https://easings.net/#easeInBack
+    public static float In_Backtrack(float percentComplete)
+    {
+        const float c1 = 1.70158f;
+        const float c2 = c1 + 1;
+
+        return (c2 * Mathf.Pow(percentComplete,3)) - (c1 * Mathf.Pow(percentComplete,2));
+    }
+
+    // https://easings.net/#easeOutBack
+    public static float Out_Backtrack(float percentComplete)
+    {
+        const float c1 = 1.70158f;
+        const float c2 = c1 + 1;
+
+        return 1 + (c2 * Mathf.Pow(percentComplete-1,3)) - (c1 * Mathf.Pow(percentComplete-1,2));
+    }
+
+    // https://easings.net/#easeInOutBack
+    public static float In_Out_Backtrack(float percentComplete)
+    {
+        const float c1 = 1.70158f;
+        const float c2 = c1 + 1;
+
+        if(percentComplete < 0.5)
+        {
+            return ((Mathf.Pow(2*percentComplete, 2))*( (c2 + 1) * (percentComplete * 2 - 2) + c2 ) + 2 ) / 2;
+        }
+        else
+        {
+            return ((Mathf.Pow(2*percentComplete - 2, 2) * ((c2+1)*(percentComplete*2-2)+2))+2)/2;
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    // https://easings.net/#easeInElastic
+    public static float In_Elastic(float percentComplete)
+    {
+        const float c3 = (2*Mathf.Pi) / 3;
+
+        if(percentComplete == 0)
+        {
+            return 0;
+        }
+        else if(percentComplete == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return Mathf.Pow(2, 10*percentComplete-10) * (float)Mathf.Sin((percentComplete*10 - 10.75f) * c3);
+        }
+    }
+
+    // https://easings.net/#easeOutElastic
+    public static float Out_Elastic(float percentComplete)
+    {
+        const float c3 = (2.0f*Mathf.Pi) / 3.0f;
+
+        if(percentComplete == 0)
+        {
+            return 0;
+        }
+        else if(percentComplete == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return Mathf.Pow(2, 10*percentComplete - 10) * (float)Mathf.Sin((percentComplete*10 - 0.75f) * c3) + 1.0f;
+        }
+    }
+
+    // https://easings.net/#easeInOutElastic
+    public static float In_Out_Elastic(float percentComplete)
+    {
+        const float c4 = (2.0f*Mathf.Pi) / 4.5f;
+
+        if(percentComplete == 0)
+        {
+            return 0;
+        }
+        else if(percentComplete == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            if(percentComplete < 0.5)
+            {
+                return -(Mathf.Pow(2, 20*percentComplete-10)*(float)Mathf.Sin(20*percentComplete-11.125)*c4)/2;
+            }
+            else
+            {
+                return 1+(Mathf.Pow(2, -20*percentComplete-10)*(float)Mathf.Sin(20*percentComplete-11.125)*c4)/2;
+            }
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    // https://easings.net/#easeInBounce
+    public static float In_Bounce(float percentComplete)
+    {
+        return 1 - Out_Bounce(1 - percentComplete);
+    }
+
+    // https://easings.net/#easeOutBounce
+    public static float Out_Bounce(float percentComplete)
+    {
+        const float n1 = 7.5625f;
+        const float d1 = 2.75f;
+    
+        if (percentComplete < (1 / d1))
+        {
+            return n1 * percentComplete * percentComplete;
+        }
+        else if(percentComplete < (2 / d1))
+        {
+            float adjusted = percentComplete - (1.5f / d1);
+            return n1 * (adjusted) * adjusted + 0.75f;
+        }
+        else if(percentComplete < (2.5f / d1)){
+            float adjusted = percentComplete - (2.25f / d1);
+            return n1 * (adjusted) * adjusted + 0.9375f;
+        }
+        else
+        {
+            float adjusted = percentComplete - (2.625f / d1);
+            return n1 * (adjusted) * adjusted + 0.984375f;
+        }
+    }
+
+    // https://easings.net/#easeInOutBounce
+    public static float In_Out_Bounce(float percentComplete )
+    {
+        if(percentComplete < 0.5)
+            return (1 - Out_Bounce(1 - 2 * percentComplete)) / 2.0f;
+        else
+        {
+            return (1 + Out_Bounce(2 * percentComplete - 1)) / 2.0f;
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    public static float In_Ease(float percentComplete)
+    {
+        return Mathf.Sqrt(percentComplete);
+    }
+
+    public static float Out_Ease(float percentComplete)
+    {
+        return Mathf.Pow(percentComplete, 2.0f);
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    // NOTE: Fast is a descriptor of the behavior, not the Big O Complexity
+    public static float In_Fast(float percentComplete)
+    {
+        return Mathf.Sqrt(Mathf.Sqrt(percentComplete));
+    }
+
+    public static float Out_Fast(float percentComplete)
+    {
+        return Mathf.Pow(percentComplete, 4.0f);
+    }
+
+    /////////////////////////////////////////////////////////////////
 } //ssalc
 
 #endif
